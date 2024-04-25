@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      margin: 0 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- Formulário de login seguro -->
+    <div class="form-container">
+      <h2>Login Seguro</h2>
+      <form action="login_seguro.php" method="post">
+        <label for="secure_username">Nome de Usuário:</label><br>
+        <input type="text" id="secure_username" name="username" required><br>
+        <label for="secure_password">Senha:</label><br>
+        <input type="password" id="secure_password" name="password" required><br><br>
+        <input type="submit" value="Login">
+      </form>
+    </div>
+
+    <!-- Formulário de login menos seguro -->
+    <div class="form-container">
+      <h2>Login Não Seguro</h2>
+      <form action="login_nao_seguro.php" method="post">
+        <label for="insecure_username">Nome de Usuário:</label><br>
+        <input type="text" id="insecure_username" name="username" required><br>
+        <label for="insecure_password">Senha:</label><br>
+        <input type="password" id="insecure_password" name="password" required><br><br>
+        <input type="submit" value="Login">
+      </form>
+    </div>
+  </div>
+
+</body>
+
+</html>

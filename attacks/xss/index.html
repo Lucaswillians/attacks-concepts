@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Comentários</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <main id="comments">
+    <header>
+      <h1>Comentários</h1>
+      <p>Comente abaixo o que desejar!</p>
+    </header>
+
+    <form id="comment-form">
+      <div>
+        <label for="comment">Comentário</label>
+        <textarea id="comment" rows="8"></textarea>
+      </div>
+
+      <button type="submit">Enviar</button>
+    </form>
+
+    <footer>
+      <h1>Outros comentários</h1>
+
+      <table id="comment-table">
+      </table>
+    </footer>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      function addComment(comment) {
+        var commentRow = document.createElement('tr');
+        commentRow.className = 'comment';
+        var commentData = document.createElement('td');
+        var commentTime = document.createElement('h4');
+        commentTime.textContent = new Date().toLocaleString();
+        var commentContent = document.createElement('p');
+        commentContent.textContent = comment;
+        commentData.appendChild(commentTime);
+        commentData.appendChild(commentContent);
+        commentRow.appendChild(commentData);
+        document.getElementById('comment-table').appendChild(commentRow);
+      }
+
+      document.getElementById('comment-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        var commentInput = document.getElementById('comment').value.trim();
+        if (commentInput !== '') {
+
+          var cleanedComment = clearContent(commentInput);
+
+          addComment(cleanedComment);
+
+          document.getElementById('comment').value = '';
+        }
+      });
+
+      function clearContent(comment) {
+        comment = comment.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        comment = comment.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+        comment = comment.replace(/'/g, '&#39;').replace(/`/g, '&#96;');
+        return comment;
+      }
+    });
+  </script>
+</body>
+
+</html>
