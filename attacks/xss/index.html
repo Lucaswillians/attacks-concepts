@@ -43,7 +43,7 @@
         var commentTime = document.createElement('h4');
         commentTime.textContent = new Date().toLocaleString();
         var commentContent = document.createElement('p');
-        commentContent.textContent = comment;
+        commentContent.innerHTML = comment;
         commentData.appendChild(commentTime);
         commentData.appendChild(commentContent);
         commentRow.appendChild(commentData);
